@@ -42,15 +42,6 @@ public class Main {
     public static void agregarVehiculo(GestorVehiculos gestorVehiculos){
 
         Vehiculo vehiculo = null;
-
-        String id = Menu.preguntarTexto("Introduce el ID del vehiculo");
-        String marca = Menu.preguntarTexto("Introduce la marca del vehiculo");
-        double kilometraje = Menu.preguntarDecimal("Introduce el kilometraje del vehiculo");
-
-        vehiculo.setId(id);
-        vehiculo.setMarca(marca);
-        vehiculo.setKilometraje(kilometraje);
-
         int tipoVehiculo = Menu.preguntarOpcion(new String[]{"Auto","Camion"});
         switch (tipoVehiculo) {
             case 1:
@@ -69,8 +60,20 @@ public class Main {
                 vehiculo = camion;
                 break;
         }   
-        
-        gestorVehiculos.agregarVehiculo(vehiculo);
+
+        String id = Menu.preguntarTexto("Introduce el ID del vehiculo");
+        String marca = Menu.preguntarTexto("Introduce la marca del vehiculo");
+        double kilometraje = Menu.preguntarDecimal("Introduce el kilometraje del vehiculo");
+
+        if (vehiculo != null) {
+            vehiculo.setId(id);
+            vehiculo.setMarca(marca);
+            vehiculo.setKilometraje(kilometraje);
+            
+            gestorVehiculos.agregarVehiculo(vehiculo);
+        } else {
+            System.out.println("Tipo de vehículo no válido. No se agregó ningún vehículo.");
+        }
     }
 
     public static void listarVehiculos(GestorVehiculos gestorVehiculos){

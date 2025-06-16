@@ -21,7 +21,7 @@ public class Auto extends Vehiculo {
 
     @Override
     public void realizarMantenimiento() {
-       
+       kilometraje = 0;
     }
 
     @Override
